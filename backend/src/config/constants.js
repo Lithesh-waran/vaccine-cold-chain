@@ -1,0 +1,111 @@
+'use strict';
+
+const ROLES = Object.freeze({
+  ADMIN: 'ADMIN',
+  OPERATOR: 'OPERATOR',
+  WAREHOUSE: 'WAREHOUSE',
+});
+
+const BATCH_STATUS = Object.freeze({
+  AVAILABLE: 'AVAILABLE',
+  QUARANTINED: 'QUARANTINED',
+  EXPIRED: 'EXPIRED',
+  DEPLETED: 'DEPLETED',
+});
+
+const SHIPMENT_STATUS = Object.freeze({
+  PREPARING: 'PREPARING',
+  IN_TRANSIT: 'IN_TRANSIT',
+  DELAYED: 'DELAYED',
+  CRITICAL: 'CRITICAL',
+  DELIVERED: 'DELIVERED',
+  CANCELLED: 'CANCELLED',
+});
+
+/** Shipments that are (virtually) on the road. */
+const ACTIVE_SHIPMENT_STATUSES = Object.freeze([
+  SHIPMENT_STATUS.IN_TRANSIT,
+  SHIPMENT_STATUS.DELAYED,
+  SHIPMENT_STATUS.CRITICAL,
+]);
+
+const VEHICLE_STATE = Object.freeze({
+  MOVING: 'MOVING',
+  STOPPED: 'STOPPED',
+  DELAYED: 'DELAYED',
+});
+
+const SCENARIO = Object.freeze({
+  NORMAL: 'NORMAL',
+  TEMPERATURE_EXCURSION: 'TEMPERATURE_EXCURSION',
+  VEHICLE_DELAY: 'VEHICLE_DELAY',
+  ROUTE_DEVIATION: 'ROUTE_DEVIATION',
+  SENSOR_FAILURE: 'SENSOR_FAILURE',
+});
+
+const ALERT_TYPE = Object.freeze({
+  TEMPERATURE_EXCURSION: 'TEMPERATURE_EXCURSION',
+  SHIPMENT_DELAY: 'SHIPMENT_DELAY',
+  ROUTE_DEVIATION: 'ROUTE_DEVIATION',
+  SENSOR_FAILURE: 'SENSOR_FAILURE',
+  LOW_STOCK: 'LOW_STOCK',
+  EXPIRY_RISK: 'EXPIRY_RISK',
+});
+
+const ALERT_SEVERITY = Object.freeze({
+  INFO: 'INFO',
+  WARNING: 'WARNING',
+  CRITICAL: 'CRITICAL',
+});
+
+const SIM_STATE = Object.freeze({
+  IDLE: 'IDLE',
+  RUNNING: 'RUNNING',
+  PAUSED: 'PAUSED',
+  STOPPED: 'STOPPED',
+  COMPLETED: 'COMPLETED',
+});
+
+const READING_STATUS = Object.freeze({
+  NORMAL: 'NORMAL',
+  EXCURSION: 'EXCURSION',
+});
+
+const READING_SOURCE = Object.freeze({
+  SIMULATION: 'SIMULATION',
+  MANUAL: 'MANUAL',
+});
+
+const SOCKET_EVENTS = Object.freeze({
+  TEMPERATURE_UPDATE: 'temperature:update',
+  LOCATION_UPDATE: 'location:update',
+  SHIPMENT_UPDATE: 'shipment:update',
+  INVENTORY_UPDATE: 'inventory:update',
+  ALERT_NEW: 'alert:new',
+  ALERT_RESOLVED: 'alert:resolved',
+  SIMULATION_UPDATE: 'simulation:update',
+  SIMULATION_STARTED: 'simulation:started',
+  SIMULATION_PAUSED: 'simulation:paused',
+  SIMULATION_STOPPED: 'simulation:stopped',
+  SIMULATION_COMPLETED: 'simulation:completed',
+});
+
+const DASHBOARD_ROOM = 'dashboard';
+const shipmentRoom = (shipmentId) => `shipment:${shipmentId}`;
+
+module.exports = {
+  ROLES,
+  BATCH_STATUS,
+  SHIPMENT_STATUS,
+  ACTIVE_SHIPMENT_STATUSES,
+  VEHICLE_STATE,
+  SCENARIO,
+  ALERT_TYPE,
+  ALERT_SEVERITY,
+  SIM_STATE,
+  READING_STATUS,
+  READING_SOURCE,
+  SOCKET_EVENTS,
+  DASHBOARD_ROOM,
+  shipmentRoom,
+};

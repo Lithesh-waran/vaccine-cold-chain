@@ -1,0 +1,37 @@
+{
+  "name": "vaccine-cold-chain-backend",
+  "version": "1.0.0",
+  "description": "Backend for the Vaccine Cold-Chain Monitoring & Compliance Platform with a built-in software simulation engine (no physical IoT hardware required).",
+  "main": "src/server.js",
+  "scripts": {
+    "setup": "node scripts/setup-env.js",
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "seed": "node scripts/seed.js",
+    "seed:reset": "node scripts/seed.js --reset",
+    "verify": "node scripts/verify.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18.11.0"
+  },
+  "keywords": [
+    "cold-chain",
+    "vaccine",
+    "express",
+    "mongodb",
+    "socket.io",
+    "simulation"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5",
+    "pdfkit": "^0.15.2",
+    "socket.io": "^4.8.1"
+  }
+}
