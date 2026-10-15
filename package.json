@@ -1,0 +1,26 @@
+{
+  "name": "vaccine-cold-chain",
+  "version": "1.0.0",
+  "description": "Vaccine Cold-Chain Monitoring & Compliance Platform",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install --prefix backend && npm install --prefix client",
+    "build": "npm run build --prefix client",
+    "test": "npm test --prefix backend",
+    "verify": "npm run verify --prefix backend",
+    "seed": "npm run seed --prefix backend",
+    "start": "node backend/src/server.js"
+  },
+  "engines": {
+    "node": ">=18.11.0"
+  },
+  "keywords": [
+    "vaccine",
+    "cold-chain",
+    "iot-simulation",
+    "compliance",
+    "mern"
+  ],
+  "author": "",
+  "license": "MIT"
+}

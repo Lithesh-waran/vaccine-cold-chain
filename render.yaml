@@ -1,0 +1,21 @@
+services:
+  # Backend API & Simulation Web Service
+  - type: web
+    name: coldchain-api
+    runtime: node
+    plan: starter
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: JWT_SECRET
+        generateValue: true
+      - key: MONGODB_URI
+        sync: false
+      - key: CORS_ORIGINS
+        value: '*'
