@@ -3,7 +3,7 @@ services:
   - type: web
     name: coldchain-api
     runtime: node
-    plan: starter
+    plan: free
     rootDir: backend
     buildCommand: npm install
     startCommand: npm start

@@ -34,3 +34,6 @@ credentials.txt
 *.pem
 *.key
 *.cert
+
+# Local report screenshots (excluded from deployment)
+screenshots/
