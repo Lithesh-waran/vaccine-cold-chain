@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-export const api = axios.create({ baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api', timeout: 20000 });
+const defaultBaseUrl = typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+  ? 'https://coldchain-api-m3ym.onrender.com/api'
+  : 'http://localhost:5000/api';
+
+export const api = axios.create({ baseURL: import.meta.env.VITE_API_URL || defaultBaseUrl, timeout: 20000 });
 let unauthorizedHandler = null;
 export const setUnauthorizedHandler = (fn) => { unauthorizedHandler = fn; };
 api.interceptors.request.use((config) => {
