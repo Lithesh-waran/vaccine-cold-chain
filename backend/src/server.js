@@ -20,6 +20,9 @@ async function main() {
   const mongoose = require('mongoose');
   await Promise.all(Object.values(mongoose.models).map((model) => model.init()));
 
+  const seedService = require('./services/seedService');
+  await seedService.autoSeedIfEmpty();
+
   const stale = await shipmentService.markStaleSimulationsStopped();
   if (stale > 0) logger.warn(`${stale} shipment simulation(s) were left running by a previous process and were marked STOPPED`);
 

@@ -25,4 +25,18 @@ router.use('/dashboard', require('./dashboardRoutes'));
 router.use('/reports', require('./reportRoutes'));
 router.use('/simulation', require('./simulationRoutes'));
 
+router.post('/setup/seed', async (req, res, next) => {
+  try {
+    const seedService = require('../services/seedService');
+    const result = await seedService.autoSeedIfEmpty();
+    res.json({
+      success: true,
+      message: result.seeded ? 'Database seeded successfully' : 'Database already contains data',
+      data: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
